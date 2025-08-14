@@ -3,7 +3,7 @@ import Button from "../Buttons/Button";
 
 const Banner = () => {
   return (
-    <div
+    <section
       style={{
         backgroundImage: `url("/images/banner-home.jpg")`,
       }}
@@ -22,7 +22,7 @@ const Banner = () => {
           <Button title="Перейти в каталог" link="/" theme="light" />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

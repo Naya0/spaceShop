@@ -49,7 +49,7 @@ const AnimationTextBlock = () => {
   }, []);
 
   return (
-    <div
+    <section
       ref={elementRef}
       className="h-[600px]  w-5/6 m-auto py-18 grid grid-cols-[2fr_1fr] items-end overflow-hidden"
     >
@@ -72,7 +72,7 @@ const AnimationTextBlock = () => {
           className="h-5/6"
         />
       </div>
-    </div>
+    </section>
   );
 };
 

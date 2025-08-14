@@ -28,10 +28,10 @@ const POPULAT_PRODUCTS: Product[] = [
 
 const PopularProducts = () => {
   return (
-    <div className="w-5/6 m-auto">
+    <section className="w-5/6 m-auto">
       <h2>Популярные товары</h2>
       <ProductsList listProduct={POPULAT_PRODUCTS} />
-    </div>
+    </section>
   );
 };
 
