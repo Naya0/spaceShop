@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router";
+import { NavLink, useLocation } from "react-router";
 
 const Header = () => {
   const [hasScrolled, setHasScrolled] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,25 +23,47 @@ const Header = () => {
   return (
     <header
       className=" h-[60px] w-full flex items-center justify-center z-50 fixed  border-b border-white"
-      style={{ backgroundColor: hasScrolled ? "white" : "transparent"}}
+      style={{ backgroundColor: (hasScrolled || !isHomePage)? "white" : "transparent" }}
     >
       <div className="w-5/6 flex justify-between items-center">
-        <nav className="text-xs hover:text-gray-600 flex-1" style={{ color: hasScrolled ? "#1c1c1c" : "white"}}>
+        <nav
+          className="text-xs hover:text-gray-600 flex-1"
+          style={{ color: (hasScrolled || !isHomePage) ? "#1c1c1c" : "white" }}
+        >
           <NavLink to="/" end>
             Home
           </NavLink>
-          {/* <NavLink to="/trending" end>
-          Trending Concerts
-        </NavLink> */}
         </nav>
-        <div className="text-xl uppercase flex justify-center flex-1" style={{ color: hasScrolled ? "#1c1c1c" : "white"}}>
+        <div
+          className="text-xl uppercase flex justify-center flex-1"
+          style={{ color: (hasScrolled || !isHomePage) ? "#1c1c1c" : "white" }}
+        >
           <NavLink to="/" end>
             Stellar Dreams
           </NavLink>
         </div>
-        <div className="flex justify-end items-center gap-8 flex-1" style={{ color: hasScrolled ? "#1c1c1c" : "white"}}>
-          <div className="text-xs hover:text-gray-600">Корзина</div>
-          <div className="text-xs hover:text-gray-600">Понравившееся</div>
+        <div
+          className="flex justify-end items-center gap-6 flex-1"
+          style={{ color: (hasScrolled || !isHomePage) ? "#1c1c1c" : "white" }}
+        >
+          <div className="text-xs hover:text-gray-600 flex items-center gap-1">
+            <img
+              src="/images/cart.png"
+              alt="корзина пользователя"
+              className="h-7"
+              style={{ filter: (hasScrolled || !isHomePage) ? "invert(0)" : "invert(1)" }}
+            />
+            <span className="text-lg">0</span>
+          </div>
+          <div className="text-xs hover:text-gray-600 flex items-center gap-1">
+            <img
+              src="/images/heart.png"
+              alt="понравившиеся товары"
+              className="h-5"
+              style={{ filter: (hasScrolled || !isHomePage) ? "invert(0)" : "invert(1)" }}
+            />
+            <span className="text-lg">0</span>
+          </div>
         </div>
       </div>
     </header>
