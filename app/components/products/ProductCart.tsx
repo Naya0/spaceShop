@@ -8,32 +8,35 @@ interface ProductCartProps {
   product: Product;
 }
 
-const ProductCart = ({ product }: ProductCartProps) => { // write isLoading
+const ProductCart = ({ product }: ProductCartProps) => {
+  // write isLoading
   return (
-    <div className="bg-gray-100 flex flex-col justify-between items-end p-5 min-h-[300px]">
-      <div className="w-full">
-        <p className="text-xs text-gray-500">открытка</p>
-        <p className="text-base">{product.name}</p>
-      </div>
-      <div
-        className="my-2 overflow-hidden h-[200px] w-full bg-cover bg-no-repeat"
-        style={{ backgroundImage: `url('${productImage}')` }}
-      ></div>
-      <div className="w-full flex justify-between items-center">
-        <div>
-          <p>Масса: {product.mass} </p>
-          <p>Радиус: {product.radius} </p>
-          <p>Дистанция в стевых годах: {product.distance_light_year} </p>
-          <p>
-            <span className="text-base uppercase">
-              {product.host_star_temperature} руб.
-            </span>
-          </p>
+    <NavLink to={`/products/${product.name}`}>
+      <div className="bg-gray-100 flex flex-col justify-between items-end p-5 min-h-[300px]">
+        <div className="w-full">
+          <p className="text-xs text-gray-500">открытка</p>
+          <p className="text-base">{product.name}</p>
         </div>
-      <NavLink to={`/products/${product.name}`}>ddd</NavLink>
-        {/* <ButtonsIcon icon="arrow.png" link="/" theme="light" /> */}
+        <div
+          className="my-2 overflow-hidden h-[200px] w-full bg-cover bg-no-repeat"
+          style={{ backgroundImage: `url('${productImage}')` }}
+        ></div>
+        <div className="w-full flex justify-between items-center">
+          <div>
+            <p>Масса: {product.mass} </p>
+            <p>Радиус: {product.radius} </p>
+            <p>Дистанция в стевых годах: {product.distance_light_year} </p>
+            <p>
+              <span className="text-base uppercase">
+                {product.host_star_temperature} руб.
+              </span>
+            </p>
+          </div>
+
+          {/* <ButtonsIcon icon="arrow.png" link="/" theme="light" /> */}
+        </div>
       </div>
-    </div>
+    </NavLink>
   );
 };
 
