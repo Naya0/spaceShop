@@ -51,7 +51,7 @@ const AnimationTextBlock = () => {
   return (
     <section
       ref={elementRef}
-      className="h-[600px]  w-5/6 m-auto py-18 grid grid-cols-[2fr_1fr] items-end overflow-hidden"
+      className="h-[600px] py-18 grid grid-cols-[2fr_1fr] items-end overflow-hidden"
     >
       <div>
         <Trail open={open}>
