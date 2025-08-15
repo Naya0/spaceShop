@@ -3,7 +3,7 @@ import EasyOrderCart from "./EasyOrderCart";
 
 const EasyOrder = () => {
   return (
-    <section className="w-5/6 m-auto ">
+    <section>
       <h2>Заказать легко!</h2>
       <div
         className="grid gap-5 justify-between
