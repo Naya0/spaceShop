@@ -1,1 +1,1 @@
-export const BASE_API_URL = 'https://api.api-ninjas.com/v1/planets'
+export const BASE_API_URL = 'https://api.escuelajs.co/api/v1/'

@@ -1,11 +1,10 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: "https://api.api-ninjas.com/v1",
+  baseURL: "https://api.escuelajs.co/api/v1/",
   timeout: 5000,
   headers: {
     "Content-Type": "application/json",
-    "X-Api-Key": import.meta.env.VITE_API_KEY,
   },
 });
 

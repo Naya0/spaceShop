@@ -1,12 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { api } from "~/api/baseApi";
-import type { Product } from "~/types/product.types";
+import type {  Product } from "~/types/product.types";
 
 export const getProducts = createAsyncThunk(
   "products/getProducts",
   async (_, thunkAPI) => {
     try {
-      const res = await api.get("/planets?min_mass=0");
+      const res = await api.get("/products");
       return res.data;
     } catch (err) {
       console.log(err);
@@ -15,13 +15,17 @@ export const getProducts = createAsyncThunk(
   }
 );
 
-interface ProductsList {
+interface productsList {
   list: Product[];
   isLoading: boolean;
+//   filtered: string[];
+//   realted: string[];
 }
 
-const initialState: ProductsList = {
+const initialState: productsList = {
   list: [],
+//   filtered: [],
+//   realted: [],
   isLoading: true,
 };
 
