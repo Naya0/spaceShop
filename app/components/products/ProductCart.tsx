@@ -9,34 +9,40 @@ interface ProductCartProps {
 }
 
 const ProductCart = ({ product }: ProductCartProps) => {
-  // write isLoading
-  return (
-    <NavLink to={`/products/${product.name}`}>
-      <div className="bg-gray-100 flex flex-col justify-between items-end p-5 min-h-[300px]">
-        <div className="w-full">
-          <p className="text-xs text-gray-500">открытка</p>
-          <p className="text-base">{product.name}</p>
-        </div>
-        <div
-          className="my-2 overflow-hidden h-[200px] w-full bg-cover bg-no-repeat"
-          style={{ backgroundImage: `url('${productImage}')` }}
-        ></div>
-        <div className="w-full flex justify-between items-center">
-          <div>
-            <p>Масса: {product.mass} </p>
-            <p>Радиус: {product.radius} </p>
-            <p>Дистанция в стевых годах: {product.distance_light_year} </p>
-            <p>
-              <span className="text-base uppercase">
-                {product.host_star_temperature} руб.
-              </span>
-            </p>
-          </div>
 
-          {/* <ButtonsIcon icon="arrow.png" link="/" theme="light" /> */}
+  
+  return (
+    <div className="bg-gray-100 flex flex-col justify-between items-end p-5 aspect-7/9">
+      <div className="w-full">
+        <p className="text-xs text-gray-500">{product.category.name}</p>
+        <p className="text-base h-[48px]">{product.title}</p>
+      </div>
+      <div
+        className="my-2 overflow-hidden h-5/6 w-full bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url('${product.images[0]}')` }}
+      ></div>
+      <div className="w-full flex justify-between items-center">
+        <div className="flex flex-col gap-3">
+          <p className="line-clamp-3 text-sm my-5"> {product.description} </p>
+
+          <div className="flex items-center justify-between">
+            <span className="text-base uppercase">{product.price * 100} руб.</span>
+            <div className="flex gap-2 items-center justify-end">
+              <img
+                src="/images/cart.png"
+                alt="корзина пользователя"
+                className="h-7"
+              />
+              <img
+                src="/images/heart.png"
+                alt="понравившиеся товары"
+                className="h-5"
+              />
+            </div>
+          </div>
         </div>
       </div>
-    </NavLink>
+    </div>
   );
 };
 
