@@ -1,25 +1,36 @@
 import React from "react";
 import type { Product } from "~/types/product.types";
 import ProductCart from "./ProductCart";
-import { useSelector } from "react-redux";
-import { useAppSelector } from "../../features/hooks";
+import { Link } from "react-router";
 
-interface ProductsListProps {
-  listProduct: Product[];
+interface ProductsSectionProps {
+  title: string;
+  products: Product[];
+  amount?: number;
 }
 
-const ProductsList = ({ listProduct }: ProductsListProps) => {
+const ProductsList = ({
+  title,
+  products,
+  amount = 3,
+}: ProductsSectionProps) => {
+  const listProducts = products.filter((_, i) => i < amount);
 
-  const { list } = useAppSelector((products) => products.products);
   return (
-    <div
-      className="grid gap-3"
-      style={{ gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))" }}
-    >
-      {list.slice(0, 3).map((item, index) => (
-        <ProductCart key={index} product={item} />
-      ))}
-    </div>
+    <section>
+      <h2>{title}</h2>
+
+      <div
+        className="grid gap-3 md:grid-rows-1"
+        style={{ gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))" }}
+      >
+        {listProducts.map((product: Product) => (
+          <Link key={product.id} to={`/products/${product.id}`}>
+            <ProductCart product={product} />
+          </Link>
+        ))}
+      </div>
+    </section>
   );
 };
 
