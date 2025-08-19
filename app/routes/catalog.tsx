@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router";
 import ProductsList from "~/components/products/ProductsList";
 import { useAppSelector } from "~/features/hooks";
 
 const catalog = () => {
   const products = useAppSelector((state) => state.products);
+  const navigate = useNavigate();
 
   return (
     <section className="w-full pt-[60px]">
-        <ProductsList
-          title="Каталог"
-          amount={20}
-          products={products.list}
-        />
+      {products.isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <ProductsList title="Каталог" amount={20} products={products.list} />
+      )}
     </section>
   );
 };
