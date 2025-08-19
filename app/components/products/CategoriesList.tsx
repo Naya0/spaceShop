@@ -1,5 +1,5 @@
 import React from "react";
-import CategoryCart from "./CategoryCart";
+import CategoryCart from "./CategoryCard";
 import type { Category } from "~/types/product.types";
 import { Link } from "react-router";
 
@@ -24,7 +24,7 @@ const CategoriesList = ({
         style={{ gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))" }}
       >
         {categoriesList.map((category) => (
-          <Link to={`/categories/${category.id}`}  key={category.id} >
+          <Link to={`/catalog/${category.name}`}  key={category.id} >
             <CategoryCart category={category} />
           </Link>
         ))}
