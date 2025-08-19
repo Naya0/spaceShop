@@ -1,6 +1,6 @@
 import React from "react";
 import type { Product } from "~/types/product.types";
-import ProductCart from "./ProductCart";
+import ProductCard from "./ProductCard";
 import { Link } from "react-router";
 
 interface ProductsSectionProps {
@@ -19,15 +19,12 @@ const ProductsList = ({
   return (
     <section>
       <h2>{title}</h2>
-
       <div
         className="grid gap-3 md:grid-rows-1"
         style={{ gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))" }}
       >
         {listProducts.map((product: Product) => (
-          <Link key={product.id} to={`/products/${product.id}`}>
-            <ProductCart product={product} />
-          </Link>
+          <ProductCard product={product} key={product.id} />
         ))}
       </div>
     </section>
