@@ -51,26 +51,26 @@ const AnimationTextBlock = () => {
   return (
     <section
       ref={elementRef}
-      className="h-[600px] py-18 grid grid-cols-[2fr_1fr] items-end overflow-hidden"
+      className="h-[600px] py-18 grid md:grid-cols-[2fr_1fr] grid-cols-1 grid-rows-[3fr_1fr] items-end overflow-hidden"
     >
       <div>
         <Trail open={open}>
-          <span className="text-gray-300 uppercase text-9xl">Открой</span>
-          <span className="text-gray-300 uppercase  text-9xl ml-28">Тайны</span>
-          <span className="text-gray-300 uppercase text-9xl ml-48">
+          <span className="text-gray-300 uppercase md:text-9xl text-6xl">
+            Открой
+          </span>
+          <span className="text-gray-300 uppercase  md:text-9xl md:ml-28 text-6xl ml-15">
+            Тайны
+          </span>
+          <span className="text-gray-300 uppercase md:text-9xl md:ml-48 text-6xl">
             Космоса
           </span>
-          <span className="text-gray-300 uppercase not-first:uppercase text-9xl ml-68">
+          <span className="text-gray-300 uppercase not-first:uppercase md:text-9xl  text-6xl md:ml-68 ml-20">
             с нами
           </span>
         </Trail>
       </div>
-      <div>
-        <img
-          src="/images/moon.png"
-          alt="moon"
-          className="h-5/6"
-        />
+      <div className="flex justify-end">
+        <img src="/images/moon.png" alt="moon" className="sm:h-5/6 h-[100px]" />
       </div>
     </section>
   );
