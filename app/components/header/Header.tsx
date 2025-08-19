@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router";
 import { useAppSelector } from "~/features/hooks";
+import Icon from "../Icon/Icon";
+import { totalQuantity } from "~/utils/common";
 
 const Header = () => {
   const [hasScrolled, setHasScrolled] = useState(false);
@@ -9,9 +11,6 @@ const Header = () => {
 
   const cart = useAppSelector((state) => state.cart);
 
-  if (cart) {
-    console.log(cart) 
- }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,8 +38,8 @@ const Header = () => {
           className="text-xs hover:text-gray-600 flex-1"
           style={{ color: hasScrolled || !isHomePage ? "#1c1c1c" : "white" }}
         >
-          <NavLink to="/" end>
-            Home
+          <NavLink to="/catalog" end>
+            Catalog
           </NavLink>
         </nav>
         <div
@@ -56,35 +55,37 @@ const Header = () => {
           style={{ color: hasScrolled || !isHomePage ? "#1c1c1c" : "white" }}
         >
           <Link to={"cart"}>
-          <div className="text-xs hover:text-gray-600 flex items-center gap-1">
-            <img
-              src="/images/cart.png"
-              alt="корзина пользователя"
-              className="h-7"
-              style={{
-                filter: hasScrolled || !isHomePage ? "invert(0)" : "invert(1)",
-              }}
-            />
-            <span className="text-lg"
-            style={{ color: hasScrolled || !isHomePage ? "#1c1c1c" : "white" }}>{
-              !cart ? '0' : cart.items.length
-              }</span>
-          </div>
-          </Link>
-          
             <div className="text-xs hover:text-gray-600 flex items-center gap-1">
-              <img
-                src="/images/heart.png"
-                alt="понравившиеся товары"
-                className="h-5"
-                style={{
-                  filter:
-                    hasScrolled || !isHomePage ? "invert(0)" : "invert(1)",
-                }}
+              <Icon
+                name="cart"
+                fill={hasScrolled || !isHomePage ? "#1d1d1d" : "white"}
               />
-              <span className="text-lg"
-              style={{ color: hasScrolled || !isHomePage ? "#1c1c1c" : "white" }}>0</span>
+              <span
+                className="text-lg"
+                style={{
+                  color: hasScrolled || !isHomePage ? "#1c1c1c" : "white",
+                }}
+              >
+                {totalQuantity(cart.items.map((item) => item.quantity))}
+              </span>
             </div>
+          </Link>
+
+          <div className="text-xs hover:text-gray-600 flex items-center gap-1">
+            <Icon
+              name="heart"
+              fill={hasScrolled || !isHomePage ? "#1d1d1d" : "white"}
+            />
+
+            <span
+              className="text-lg"
+              style={{
+                color: hasScrolled || !isHomePage ? "#1c1c1c" : "white",
+              }}
+            >
+              0
+            </span>
+          </div>
         </div>
       </div>
     </header>
