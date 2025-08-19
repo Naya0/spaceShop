@@ -13,6 +13,8 @@ import "./app.css";
 import { Provider } from "react-redux";
 import { store } from "./features/store";
 import Header from "./components/header/Header";
+import CartHydrator from "./components/cart/CartHydrator";
+import Footer from "./components/footer/Footer";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -35,13 +37,16 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
+        <title>Stellar Dreams</title>
       </head>
       <body>
         <Provider store={store}>
+          <CartHydrator />
           <Header />
-          <main>
+          <main className="min-h-[calc(100vh-104px)]">
             <Outlet />
           </main>
+          <Footer />
         </Provider>
         <ScrollRestoration />
         <Scripts />

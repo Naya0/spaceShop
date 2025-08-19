@@ -21,7 +21,7 @@ export interface Category {
 export interface Product {
   id: number;
   title: string;
-  slug: string;
+  slug?: string;
   price: number;
   description: string;
   category: Category;
@@ -37,7 +37,7 @@ export interface User {
   avatar: string;
 }
 
-export interface Cart {
+export interface CartType {
   id: string;
   title: string;
   price: number;
