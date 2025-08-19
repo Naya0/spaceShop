@@ -1,4 +1,5 @@
 import React from "react";
+import Icon from "../Icon/Icon";
 
 interface Button {
   height?: number;
@@ -10,8 +11,8 @@ interface Button {
 }
 
 const ButtonsIcon = ({
-  height = 50,
-  width = 50,
+  height = 35,
+  width = 35,
   theme,
   link,
   icon,
@@ -20,23 +21,16 @@ const ButtonsIcon = ({
   return (
     <button
       className={`
-      bg-white 
+      bg-transparent
       relative flex justify-center items-center
       hover:cursor-pointer  hover:text-white
       ${theme == "light" ? "hover:bg-[#9b9b9b42] " : "hover:bg-gray-300 hover:border-gray-300"}
-      border-solid border
-      ${theme == "light" ? "border-white" : "border-gray-600"}
       transition delay-150 duration-300      
       `}
       style={{ width: width + "px", height: height + "px" }}
       onClick={onClick}
     >
-      <img
-        src={`/images/` + icon}
-        alt="изображение нопки"
-        className="h-1/2 brightness-70 aspect-square "
-        aria-hidden="true"
-      />
+      <Icon name={icon} width={20} height={20} />
     </button>
   );
 };
