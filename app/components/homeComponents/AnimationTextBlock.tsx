@@ -53,7 +53,7 @@ const AnimationTextBlock = () => {
       ref={elementRef}
       className="h-[600px] py-18 grid md:grid-cols-[2fr_1fr] grid-cols-1 grid-rows-[3fr_1fr] items-end overflow-hidden"
     >
-      <div>
+      <div className="h-full">
         <Trail open={open}>
           <span className="text-gray-300 uppercase md:text-9xl text-6xl">
             Открой
