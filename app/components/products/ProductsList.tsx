@@ -20,7 +20,7 @@ const ProductsList = ({
     <section>
       <h2>{title}</h2>
       <div
-        className="grid gap-3 md:grid-rows-1"
+        className="grid gap-3 md:grid-rows-1 justify-items-stretch"
         style={{ gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))" }}
       >
         {listProducts.map((product: Product) => (

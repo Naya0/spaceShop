@@ -36,40 +36,43 @@ const ProductCard = ({ product }: ProductCardProps) => {
   };
 
   return (
-    <div className="bg-gray-100 flex flex-col justify-between items-end p-5 aspect-7/9">
+    <div className="bg-gray-100 flex flex-col items-center justify-between p-5 aspect-7/9 h-[500px]">
       <div className="w-full">
         <p className="text-xs text-gray-500">{category.name}</p>
         <Link to={`/products/${product.id}`}>
-          <p className="text-base h-[48px]  hover:text-gray-400 transition">{title}</p>
+          <p className="text-base h-[48px]  hover:text-gray-400 transition">
+            {title}
+          </p>
         </Link>
       </div>
-      <div
-        className="my-2 overflow-hidden h-5/6 w-full bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url('${images[0]}')` }}
-      ></div>
-      <div className="w-full flex justify-between items-center">
-        <div className="flex flex-col gap-3">
-          <p className="line-clamp-3 text-sm my-5"> {description} </p>
 
-          <div className="flex items-center justify-between">
-            <span className="text-base uppercase">{price * 100} руб.</span>
-            <div className="flex gap-2 items-center justify-end">
-              {currentProduct.length !== 0 ? (
-                <CounterProductCart id={product.id.toString()} />
-              ) : (
-                <ButtonsIcon
-                  theme="dark"
-                  link="Добавить в корзину"
-                  icon="cart"
-                  onClick={addToCart}
-                />
-              )}
+      <div className="w-full h-[250px] overflow-hidden">
+        <img
+          src={images[0].slice(-3) !== 'any' ? images[0] : '/images/noProduct.png' }
+          alt={images[0].slice(-3) !== 'any' ? title : 'Товар закончился'}
+          className="object-cover w-full h-full"
+        />
+      </div>
+
+      <div className=" flex flex-col gap-3 justify-between items-start w-full">
+        <p className="line-clamp-3 text-sm my-5 h-[60px] overflow-hidden">
+          {description}
+        </p>
+
+        <div className="flex items-center justify-between w-full">
+          <span className="text-base uppercase">{price * 100} руб.</span>
+          <div className="flex gap-2 items-center justify-end">
+            {currentProduct.length !== 0 ? (
+              <CounterProductCart id={product.id.toString()} />
+            ) : (
               <ButtonsIcon
                 theme="dark"
                 link="Добавить в корзину"
-                icon="heart"
+                icon="cart"
+                onClick={addToCart}
               />
-            </div>
+            )}
+            <ButtonsIcon theme="dark" link="Добавить в корзину" icon="heart" />
           </div>
         </div>
       </div>

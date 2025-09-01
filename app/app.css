@@ -13,7 +13,6 @@ body {
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
   }
-
 }
 
 @layer base {
@@ -23,8 +22,6 @@ body {
     margin: 0;
     color: rgb(29, 29, 29);
   }
-
-
 
   h1 {
     font-size: var(--text-2xl);
@@ -44,5 +41,22 @@ body {
     width: 83%;
     max-width: 1600px;
     margin: auto;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="email"] {
+    box-sizing: border-box;
+    border: 1px solid #c3c3c3;
+    height: 30px;
+    padding: 3px 10px;
+    font-size: inherit;
+    width: 300px;
+  }
+
+  input[type="text"]:focus,
+  input[type="password"]:focus,
+  input[type="email"]:focus {
+    outline: none;
   }
 }

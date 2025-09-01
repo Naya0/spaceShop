@@ -10,7 +10,7 @@ import {
 import type { Route } from "./+types/root";
 import "./app.css";
 
-import { Provider } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 import { store } from "./features/store";
 import Header from "./components/header/Header";
 import CartHydrator from "./components/cart/CartHydrator";
@@ -30,6 +30,8 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  
+
   return (
     <html lang="ru">
       <head>

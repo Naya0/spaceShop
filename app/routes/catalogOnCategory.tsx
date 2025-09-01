@@ -11,7 +11,6 @@ const catalogOnCategory = () => {
   const poductList = products.list.filter(
     (item) => item.category.name == categoryName
   );
-  console.log(poductList);
 
   return (
     <section className="w-full pt-[60px]">
