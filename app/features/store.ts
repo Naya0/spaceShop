@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import categoriesSlice from "./categories/categoriesSlice";
 import productsSlice from "./products/productsSlice";
 import { apiSlice } from "./products/productSlice";
+import userSlice from "./user/userSlice";
 import cartReducer from "./cart/cartSliсe";
 import type { CartType } from "~/types/product.types";
 
@@ -10,6 +11,7 @@ export const store = configureStore({
     cart: cartReducer,
     products: productsSlice,
     categories: categoriesSlice,
+    user: userSlice,
     [apiSlice.reducerPath]: apiSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>

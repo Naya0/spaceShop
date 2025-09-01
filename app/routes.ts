@@ -7,4 +7,6 @@ export default [
   route("products/:id", "routes/productPage.tsx"),
   route("catalog/:categoryName", "routes/catalogOnCategory.tsx"),
   route("cart", "routes/cartRoute.tsx"),
+  route("signup", "routes/signup.tsx"),
+  route("login", "routes/login.tsx"),
 ] satisfies RouteConfig;
