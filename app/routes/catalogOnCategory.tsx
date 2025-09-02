@@ -13,7 +13,7 @@ const catalogOnCategory = () => {
   );
 
   return (
-    <section className="w-full pt-[60px]">
+    <div className="w-full pt-[60px]">
       {products.isLoading ? (
         <p>Loading...</p>
       ) : (
@@ -27,10 +27,12 @@ const catalogOnCategory = () => {
               Категория: {categoryName}
             </span>
           </div>
-          <ProductsList title="Каталог" amount={20} products={poductList} />
+          <section>
+            <ProductsList title="Каталог" amount={20} products={poductList} />
+          </section>
         </>
       )}
-    </section>
+    </div>
   );
 };
 

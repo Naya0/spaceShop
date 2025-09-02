@@ -7,24 +7,33 @@ interface CategoriesSectionProps {
   title: string;
   categories: Category[];
   amount?: number;
+  allCategories?: boolean;
 }
 
 const CategoriesList = ({
   title,
   categories,
   amount = 2,
+  allCategories = false,
 }: CategoriesSectionProps) => {
-  const categoriesList = categories.filter((_, i) => i < amount);
+  const categoriesList = !allCategories ? categories.filter((_, i) => i < amount) : categories;
 
   return (
     <section>
-      <h2>{title}</h2>
+      <div className="flex justify-between items-baseline">
+        <h2>{title}</h2>
+        <Link
+          to="categories"
+          className="text-gray-800 hover:text-gray-500 transition duration-300">
+          All categories
+        </Link>
+      </div>
       <div
         className="grid gap-5"
         style={{ gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))" }}
       >
         {categoriesList.map((category) => (
-          <Link to={`/catalog/${category.name}`}  key={category.id} >
+          <Link to={`/catalog/${category.name}`} key={category.id}>
             <CategoryCart category={category} />
           </Link>
         ))}

@@ -7,7 +7,7 @@ interface categoryProp {
 
 const CategoryCard = ({ category }: categoryProp) => {
   return (
-    <div className="bg-gray-100 flex flex-col justify-between items-center p-5 min-h-[350px]">
+    <article className="bg-gray-100 flex flex-col justify-between items-center p-5 min-h-[350px]">
       <p>{category.name}</p>
 
       <div className="h-[350px] overflow-hidden w-5/6 ">
@@ -25,7 +25,7 @@ const CategoryCard = ({ category }: categoryProp) => {
           className="object-cover w-full h-full"
         />
       </div>
-    </div>
+    </article>
   );
 };
 
