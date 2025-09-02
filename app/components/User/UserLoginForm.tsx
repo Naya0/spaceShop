@@ -20,15 +20,13 @@ const UserLoginForm = () => {
   } = useForm<Inputs>();
 
   const dispatch = useDispatch<AppDispatch>();
-  let navigate = useNavigate();
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     if (data) {
-      console.log("Login data:", data);
       dispatch(loginUser(data));
-      navigate('/')
-    }
+    } 
   };
+  
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}

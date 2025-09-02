@@ -4,6 +4,7 @@ import {
   type PayloadAction,
 } from "@reduxjs/toolkit";
 import axios from "axios";
+import { redirect } from "react-router";
 import type { User } from "~/types/user.types";
 import { BASE_API_URL } from "~/utils/constants";
 
@@ -27,6 +28,7 @@ export const createUser = createAsyncThunk<User, Inputs>(
   async (payload, thunkAPI) => {
     try {
       const res = await axios.post(`${BASE_API_URL}users/`, payload);
+      redirect("/");
       return res.data;
     } catch (err: any) {
       console.error("Error creating user:", err);
@@ -47,7 +49,7 @@ export const loginUser = createAsyncThunk<User, Inputs>(
       });
 
       localStorage.setItem("auth", JSON.stringify(login.data));
-
+      redirect("/");
       return login.data;
     } catch (err: any) {
       console.error("Error login user:", err);

@@ -1,6 +1,5 @@
 import React from "react";
 import { useForm, type SubmitHandler } from "react-hook-form";
-import Button from "../Buttons/Button";
 import { useDispatch } from "react-redux";
 import type { AppDispatch } from "~/features/store";
 import { createUser } from "~/features/user/userSlice";
@@ -21,12 +20,10 @@ const UserSignupForm = () => {
   } = useForm<Inputs>();
 
   const dispatch = useDispatch<AppDispatch>();
-  let navigate = useNavigate();
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     console.log("Form data:", data);
     dispatch(createUser(data));
-    navigate('/')
   };
 
   return (
