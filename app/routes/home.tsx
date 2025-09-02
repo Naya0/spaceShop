@@ -26,32 +26,33 @@ export default function Home() {
   return (
     <>
       <Banner />
-        {products.isLoading ? (
-          <p className="text-center">Loading...</p>
-        ) : (
-          <>
+      {products.isLoading ? (
+        <p className="text-center">Loading...</p>
+      ) : (
+        <>
+          <section>
             <ProductsList
               title="Популярные товары"
               amount={3}
               products={products.list}
             />
+          </section>
+          <animated.div style={{ opacity: scrollYProgress }}>
+            <AnimationTextBlock />
+            <EasyOrder />
+          </animated.div>
+        </>
+      )}
 
-            <animated.div style={{ opacity: scrollYProgress }}>
-              <AnimationTextBlock />
-              <EasyOrder />
-            </animated.div>
-          </>
-        )}
-
-        {!products.isLoading && categories.isLoading ? (
-          <p className="text-center">Loading...</p>
-        ) : (
-          <CategoriesList
-            title="Категории"
-            amount={2}
-            categories={categories.list}
-          />
-        )}
+      {!products.isLoading && categories.isLoading ? (
+        <p className="text-center">Loading...</p>
+      ) : (
+        <CategoriesList
+          title="Категории"
+          amount={2}
+          categories={categories.list}
+        />
+      )}
     </>
   );
 }

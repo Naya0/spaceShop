@@ -33,6 +33,13 @@ body {
     margin-block: 18px;
   }
 
+
+  h3 {
+    font-size: var(--text-base);
+    margin-block: 10px;
+  }
+
+
   p {
     font-size: var(--text-base);
   }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router";
 
+
 import Icon from "../Icon/Icon";
 import { totalQuantity } from "~/utils/common";
 
@@ -44,11 +45,14 @@ const Header = () => {
       >
         <div className="w-5/6 flex justify-between items-center max-w-[1600px] m-auto">
           <nav
-            className="text-xs hover:text-gray-600 flex-1"
+            className="text-xs hover:text-gray-600 flex-1 flex gap-3"
             style={{ color: hasScrolled || !isHomePage ? "#1c1c1c" : "white" }}
           >
-            <NavLink to="/catalog" end>
+            <NavLink to="/catalog" >
               Catalog
+            </NavLink>
+             <NavLink to="/categories" >
+              Categories
             </NavLink>
           </nav>
           <div
@@ -112,18 +116,21 @@ const Header = () => {
       >
         <div className="w-5/6 flex justify-between items-center max-w-[1600px] m-auto">
           <nav
-            className="text-xs hover:text-gray-600 flex-1"
+            className="text-xs hover:text-gray-600 flex-1 flex gap-3 "
             style={{ color: hasScrolled || !isHomePage ? "#1c1c1c" : "white" }}
           >
-            <NavLink to="/catalog" end>
+            <NavLink to="/catalog" className="hover:text-gray-500 transition duration-300">
               Catalog
+            </NavLink>
+             <NavLink to="/categories" className="hover:text-gray-500 transition duration-300">
+              Categories
             </NavLink>
           </nav>
           <div
             className="text-xl uppercase flex justify-center flex-1"
             style={{ color: hasScrolled || !isHomePage ? "#1c1c1c" : "white" }}
           >
-            <NavLink to="/" end>
+            <NavLink to="/" className="hover:text-gray-500 transition duration-300">
               Stellar Dreams
             </NavLink>
           </div>
@@ -131,7 +138,7 @@ const Header = () => {
             className="flex justify-end items-center gap-6 flex-1"
             style={{ color: hasScrolled || !isHomePage ? "#1c1c1c" : "white" }}
           >
-            <Link to="cart">
+            <Link to="cart" >
               <div className="text-xs hover:text-gray-600 flex items-center gap-1">
                 <Icon
                   name="cart"
@@ -164,7 +171,7 @@ const Header = () => {
             </div>
 
             {currentUser ? (
-              <div className="flex gap-2 items-center">
+              <Link to="/panel" className="flex gap-2 items-center">
                 <span
                   style={{
                     color: hasScrolled || !isHomePage ? "#1c1c1c" : "white",
@@ -185,7 +192,7 @@ const Header = () => {
                       "/images/default-avatar.png";
                   }}
                 />
-              </div>
+              </Link>
             ) : (
               <Link to="signup" className="text-xs hover:text-gray-600">
                 SignUp
