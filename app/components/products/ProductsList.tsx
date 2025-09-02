@@ -1,33 +1,48 @@
 import React from "react";
 import type { Product } from "~/types/product.types";
 import ProductCard from "./ProductCard";
-import { Link } from "react-router";
 
 interface ProductsSectionProps {
   title: string;
   products: Product[];
   amount?: number;
+  categoriesSelected?: string[];
 }
 
 const ProductsList = ({
   title,
   products,
   amount = 3,
+  categoriesSelected,
 }: ProductsSectionProps) => {
-  const listProducts = products.filter((_, i) => i < amount);
+  let filteredProducts = products;
+
+  if (categoriesSelected && categoriesSelected.length > 0) {
+    filteredProducts = filteredProducts.filter((product) =>
+      categoriesSelected.includes(product.category.name)
+    );
+  }
+
+  const listProducts = filteredProducts.slice(0, amount);
 
   return (
-    <section>
+    <div className="w-full flex flex-col justify-start max-w-[1600px]  m-auto">
       <h2>{title}</h2>
       <div
         className="grid gap-3 md:grid-rows-1 justify-items-stretch"
-        style={{ gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))" }}
+        style={{
+          gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+        }}
       >
-        {listProducts.map((product: Product) => (
-          <ProductCard product={product} key={product.id} />
-        ))}
+        {listProducts.length > 0 ? (
+          listProducts.map((product: Product) => (
+            <ProductCard product={product} key={product.id} />
+          ))
+        ) : (
+          <p>Produts not found</p>
+        )}
       </div>
-    </section>
+    </div>
   );
 };
 

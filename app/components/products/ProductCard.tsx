@@ -36,7 +36,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
   };
 
   return (
-    <div className="bg-gray-100 flex flex-col items-center justify-between p-5 aspect-7/9 h-[500px]">
+    <article className="bg-gray-100 flex flex-col items-center justify-between p-5 aspect-7/9 h-[500px]">
       <div className="w-full">
         <p className="text-xs text-gray-500">{category.name}</p>
         <Link to={`/products/${product.id}`}>
@@ -76,7 +76,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
           </div>
         </div>
       </div>
-    </div>
+    </article>
   );
 };
 
